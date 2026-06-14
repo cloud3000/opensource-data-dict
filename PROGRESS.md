@@ -90,6 +90,10 @@
 - 2026-06-14 — Added `tools/gen_diagram.py` → `DATA_MODEL.md`: Mermaid ER
   diagram, category pie, source→category flowchart, and contribution matrix,
   generated live from `datadict.db` (re-run after each build to refresh).
+- 2026-06-14 — Added licensing: `LICENSE` (MIT, code) + `DATA_LICENSE`
+  (CC BY-SA 4.0, official text, for the data compilation). README "License &
+  attribution" + sources.md document the dual setup and that per-item upstream
+  licenses still apply (attribution via SourceStandard/SourceURL + sources.md).
 - 2026-06-14 — Added `tools/render_diagrams.py` → `diagrams/*.svg` + `*.png`.
   No Node/`mmdc` available, so it renders via headless Chromium + the Mermaid
   browser library (cached in `diagrams/_build/mermaid.min.js`) — fully local,

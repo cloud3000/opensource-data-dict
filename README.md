@@ -192,7 +192,27 @@ the committed seed modules.
 
 ## License & attribution
 
-This project's code is open source. Each data item retains its originating
-`SourceStandard` and `SourceURL`; see [`sources.md`](sources.md) for the
-license of every upstream source. No paywalled, proprietary, or scraped
-commercial content is included.
+This repository is **dual-licensed** to reflect its two layers:
+
+- **Code** — the build/generator scripts (`build_dict.py`, `normalize.py`,
+  `tools/*.py`) and the project's documentation are licensed under the
+  **[MIT License](LICENSE)**.
+- **Data** — `datadict.db` / `datadict.sql` is a compilation derived from
+  multiple open sources. The original compilation, arrangement, and this
+  project's own descriptions are licensed under **[Creative Commons
+  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](DATA_LICENSE)**.
+
+**Upstream terms still apply per item.** Individual data items remain subject
+to the license of the source they came from, recorded in each row's
+`SourceStandard` / `SourceURL` and summarized in [`sources.md`](sources.md):
+HL7 FHIR (CC0), Stripe (MIT), GS1 (Apache-2.0), Microsoft CDM
+(CDLA-Permissive-2.0), Schema.org (CC BY-SA 3.0), Odoo (LGPL-3.0),
+ERPNext/Frappe Health & Tryton (GPL-3.0), ISA-95/B2MML (MESA royalty-free).
+If you redistribute the data, **provide attribution** (the per-item source
+fields + `sources.md` satisfy this) and honor each upstream license —
+particularly Schema.org's ShareAlike and the copyleft (GPL) sources.
+
+No paywalled, proprietary, or scraped commercial content is included.
+
+> Not legal advice. This dual-license setup is a good-faith, conservative
+> reflection of the sources; consult a professional for your specific use.

@@ -3,6 +3,11 @@
 Every data item in `datadict.db` originates from a **public / open-source**
 resource. No paywalled, proprietary, or scraped commercial content is used.
 
+**Licensing:** code is MIT ([`LICENSE`](LICENSE)); the data compilation is
+CC BY-SA 4.0 ([`DATA_LICENSE`](DATA_LICENSE)); each item additionally remains
+under its upstream license (the table below). See README → "License &
+attribution".
+
 > **`AllowedValues` format.** Usually a JSON **array** of permitted values
 > (e.g. `["male","female","other"]`). When a cross-source merge combines items
 > whose vocabularies **diverge**, the cell instead holds a JSON **object keyed
