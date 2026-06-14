@@ -90,6 +90,9 @@
 - 2026-06-14 — Added `tools/gen_diagram.py` → `DATA_MODEL.md`: Mermaid ER
   diagram, category pie, source→category flowchart, and contribution matrix,
   generated live from `datadict.db` (re-run after each build to refresh).
+- 2026-06-14 — Added `CONTRIBUTING.md` (seed-module contract, how to add a
+  source, alias/merge rules, pre-PR checklist, inbound=outbound licensing) and
+  a Contributing pointer in README.
 - 2026-06-14 — Added licensing: `LICENSE` (MIT, code) + `DATA_LICENSE`
   (CC BY-SA 4.0, official text, for the data compilation). README "License &
   attribution" + sources.md document the dual setup and that per-item upstream

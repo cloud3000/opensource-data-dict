@@ -190,6 +190,14 @@ Python 3 standard library only (`sqlite3`, `json`, `ast`, `urllib`,
 access to reach the upstream repos; `build_dict.py` works fully offline from
 the committed seed modules.
 
+## Contributing
+
+Contributions — new open-source sources, corrections, better descriptions,
+tooling — are welcome. See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the
+seed-module contract, how to add a source, the aliasing/merge rules, and the
+pre-PR checklist. Core rule: **public/open-source sources only, accuracy over
+quantity, always record provenance.**
+
 ## License & attribution
 
 This repository is **dual-licensed** to reflect its two layers:
