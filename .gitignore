@@ -1,0 +1,36 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# --- Diagram render cache ---
+# Holds the downloaded Mermaid library (~3 MB) and throwaway build HTML;
+# regenerated on demand by tools/render_diagrams.py. The rendered outputs
+# (diagrams/*.svg, diagrams/*.png) are kept.
+diagrams/_build/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# --- Scratch ---
+*.tmp
+*.log
+
+# --- Build artifacts (kept by default) ---
+# datadict.sql is text and diffable, so it stays under version control.
+# datadict.db is a binary SQLite file regenerable from the seeds with
+# `python3 build_dict.py`. Uncomment the next line to track only the .sql dump.
+# datadict.db
