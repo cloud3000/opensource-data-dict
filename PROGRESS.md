@@ -145,6 +145,10 @@
   steps down with coverage) from the live DB, and the README uses a constant
   shields `endpoint` URL pointing at that JSON on `main`. Regenerating the docs
   now keeps the badge honest automatically.
+- 2026-06-27 — Verified the badge renders on GitHub: shields returns a valid
+  SVG (200, contains "descriptions"/"100%") from the JSON on `main`, and the
+  GitHub GFM renderer serves it as a camo-proxied `<img>` wrapped in the link
+  to the coverage section.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
