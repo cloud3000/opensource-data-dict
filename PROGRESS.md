@@ -117,6 +117,12 @@
   entity names for Healthcare/Quality/Stock/HR/Stripe/CDM entities). 256 more
   filled; the dictionary now has **100% description coverage (0 of 3,688
   missing)**.
+- 2026-06-27 — Replaced the 256 synthesised non-Manufacturing placeholders with
+  hand-curated editorial descriptions in `tools/curated_descriptions.py`
+  (CURATED map keyed by item Name), applied via
+  `python3 tools/backfill_descriptions.py --curated` (overwrites placeholders;
+  idempotent; durable through the COALESCE upsert). Manufacturing's 198 synth-
+  esised descriptions are intentionally left as-is.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688

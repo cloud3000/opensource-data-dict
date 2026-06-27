@@ -155,12 +155,52 @@ def synthesize(name, title, allowed_values):
     return desc
 
 
+def apply_curated(conn, dry_run=False):
+    """Overwrite item descriptions from the hand-curated map.
+
+    Unlike synthesis (which fills only empty rows), this replaces whatever is
+    there -- including previously synthesised placeholders -- with the editorial
+    text in tools/curated_descriptions.py, keyed by exact item Name. Durable via
+    build_dict.py's COALESCE upsert (seeds carry NULL). Idempotent: rows already
+    holding the curated text are skipped.
+    """
+    from curated_descriptions import CURATED
+
+    updated = missing = 0
+    for name, desc in CURATED.items():
+        rows = conn.execute(
+            "SELECT DataItemID, Description FROM DataItems WHERE Name = ?", (name,)
+        ).fetchall()
+        if not rows:
+            missing += 1
+            print(f"  ! no item named {name}", file=sys.stderr)
+            continue
+        for r in rows:
+            if r["Description"] == desc:
+                continue
+            if not dry_run:
+                conn.execute(
+                    "UPDATE DataItems SET Description = ?, "
+                    "UpdatedAt = CURRENT_TIMESTAMP WHERE DataItemID = ?",
+                    (desc, r["DataItemID"]),
+                )
+            updated += 1
+
+    print(f"Curated map: {len(CURATED)} entries; "
+          f"{'would update' if dry_run else 'updated'} {updated} row(s)"
+          + (f"; {missing} name(s) not found in DB" if missing else "") + ".")
+    return updated
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Backfill missing item descriptions.")
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--category", default="Manufacturing",
                    help='Category to backfill (default: "Manufacturing").')
     g.add_argument("--all", action="store_true", help="Backfill every category.")
+    ap.add_argument("--curated", action="store_true",
+                    help="Apply hand-curated descriptions from "
+                         "tools/curated_descriptions.py (overwrites placeholders).")
     ap.add_argument("--dry-run", action="store_true",
                     help="Show what would change without writing.")
     ap.add_argument("--no-export", action="store_true",
@@ -168,6 +208,19 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     conn = connect()
+
+    if args.curated:
+        apply_curated(conn, dry_run=args.dry_run)
+        if args.dry_run:
+            print("[dry-run] no changes written.")
+            return 0
+        conn.commit()
+        if not args.no_export:
+            export_sql(conn)
+            print("Re-exported datadict.sql")
+        conn.close()
+        return 0
+
     where = "(d.Description IS NULL OR trim(d.Description) = '')"
     params = []
     if not args.all:
