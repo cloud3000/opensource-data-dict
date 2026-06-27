@@ -1,5 +1,7 @@
 # Business Application Data Dictionary
 
+[![Descriptions: 100%](https://img.shields.io/badge/descriptions-100%25-brightgreen)](DATA_MODEL.md#3-description-coverage--provenance)
+
 A comprehensive, **open-source** business data dictionary stored in SQLite
 (`datadict.db`, with a full schema + data dump in `datadict.sql`). It collects
 standardized business data items across major industries and functional areas,
