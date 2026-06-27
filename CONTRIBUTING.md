@@ -114,7 +114,9 @@ Checklist:
 - [ ] `datadict.sql` reloads into a fresh SQLite DB without error.
 - [ ] New/changed data items have `source_standard` + `source_url`.
 - [ ] `sources.md` updated (new source row + license + extraction note).
-- [ ] `PROGRESS.md` has a dated entry describing the change.
+- [ ] `PROGRESS.md` has a dated entry describing the change. (`PROGRESS.md` is
+      the granular dev log; `CHANGELOG.md` is the curated, per-release summary —
+      add a `## [Unreleased]` entry there only for release-worthy changes.)
 - [ ] Reviewed `NORMALIZATION_REPORT.md` for unexpected merges/aliases.
 - [ ] Committed the regenerated `datadict.db` / `datadict.sql` (and diagrams
       if changed).
