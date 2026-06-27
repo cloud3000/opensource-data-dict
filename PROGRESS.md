@@ -152,6 +152,8 @@
 - 2026-06-27 — `gen_diagram.py` now also emits the dynamic coverage badge at
   the top of `DATA_MODEL.md` (same endpoint JSON as the README), linking to the
   in-page coverage/provenance section.
+- 2026-06-27 — Added two license badges to the README (code MIT → `LICENSE`,
+  data CC BY-SA 4.0 → `DATA_LICENSE`), reflecting the dual license.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
