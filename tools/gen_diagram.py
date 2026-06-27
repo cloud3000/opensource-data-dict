@@ -74,6 +74,61 @@ def gather(conn):
     return cats, matrix, src_tot, total
 
 
+def coverage(conn):
+    """Classify every item's description as from-source, curated, or missing.
+
+    An item is 'curated' when its Name is in tools/curated_descriptions.py and
+    its stored Description matches that editorial text; non-empty otherwise =
+    'from source'; empty = 'missing'. Returns (per_category, totals)."""
+    try:
+        from curated_descriptions import CURATED
+    except Exception:  # noqa: BLE001
+        CURATED = {}
+    per_cat = collections.defaultdict(
+        lambda: {"total": 0, "source": 0, "curated": 0, "missing": 0})
+    tot = {"source": 0, "curated": 0, "missing": 0}
+    for cat, name, descr in conn.execute(
+            """SELECT c.Name, d.Name, d.Description FROM DataItems d
+               JOIN Categories c ON c.CategoryID=d.CategoryID"""):
+        pc = per_cat[cat]
+        pc["total"] += 1
+        if not (descr or "").strip():
+            pc["missing"] += 1
+            tot["missing"] += 1
+        elif name in CURATED and descr == CURATED[name]:
+            pc["curated"] += 1
+            tot["curated"] += 1
+        else:
+            pc["source"] += 1
+            tot["source"] += 1
+    return per_cat, tot
+
+
+def coverage_block(per_cat, tot, total):
+    """Provenance pie + per-category coverage table."""
+    lines = ['```mermaid', 'pie showData title Description provenance']
+    lines.append(f'    "From source" : {tot["source"]}')
+    lines.append(f'    "Curated (editorial)" : {tot["curated"]}')
+    if tot["missing"]:
+        lines.append(f'    "Missing" : {tot["missing"]}')
+    lines.append('```')
+    pie = "\n".join(lines) + "\n"
+
+    cats = sorted(per_cat, key=lambda c: -per_cat[c]["total"])
+    rows = ["| Category | Items | From source | Curated | Coverage |",
+            "|---|---:|---:|---:|---:|"]
+    for c in cats:
+        d = per_cat[c]
+        cov = 100.0 * (d["source"] + d["curated"]) / d["total"] if d["total"] else 0
+        rows.append(f"| {c} | {d['total']} | {d['source']} | {d['curated']} "
+                    f"| {cov:.0f}% |")
+    described = tot["source"] + tot["curated"]
+    pct = 100.0 * described / total if total else 0
+    rows.append(f"| **All** | **{total}** | **{tot['source']}** "
+                f"| **{tot['curated']}** | **{pct:.0f}%** |")
+    return pie, "\n".join(rows), pct
+
+
 def er_block():
     def cols(rows):
         out = []
@@ -144,6 +199,7 @@ def main():
     conn = sqlite3.connect(DB)
     conn.row_factory = sqlite3.Row
     cats, matrix, src_tot, total = gather(conn)
+    per_cat, cov_tot = coverage(conn)
 
     parts = []
     parts.append("# Data Model & Diagrams\n")
@@ -160,6 +216,9 @@ def main():
                  "| [er-diagram.png](diagrams/er-diagram.png) |\n"
                  "| Categories | [categories.svg](diagrams/categories.svg) "
                  "| [categories.png](diagrams/categories.png) |\n"
+                 "| Description coverage "
+                 "| [description-coverage.svg](diagrams/description-coverage.svg) "
+                 "| [description-coverage.png](diagrams/description-coverage.png) |\n"
                  "| Source→Category map "
                  "| [source-category-map.svg](diagrams/source-category-map.svg) "
                  "| [source-category-map.png](diagrams/source-category-map.png) |\n")
@@ -172,12 +231,21 @@ def main():
     parts.append("\n## 2. Categories by item count\n")
     parts.append(pie_block(cats))
 
-    parts.append("\n## 3. Which sources feed which categories\n")
+    cov_pie, cov_table, pct = coverage_block(per_cat, cov_tot, total)
+    parts.append("\n## 3. Description coverage & provenance\n")
+    parts.append(f"Every data item carries a description (**{pct:.0f}% coverage**). "
+                 "Most come straight from the upstream source; the rest are "
+                 "curated editorial text added where the source provided none "
+                 "(see [`tools/curated_descriptions.py`](tools/curated_descriptions.py)).\n")
+    parts.append(cov_pie)
+    parts.append("\n" + cov_table + "\n")
+
+    parts.append("\n## 4. Which sources feed which categories\n")
     parts.append("Edge labels = number of items each source contributes to a "
                  "category.\n")
     parts.append(flow_block(matrix, src_tot))
 
-    parts.append("\n## 4. Source contribution matrix\n")
+    parts.append("\n## 5. Source contribution matrix\n")
     parts.append(matrix_table(matrix, src_tot))
     parts.append("\n\n\\* Contribution totals count an item once **per source** "
                  "it carries, so cross-source-merged items are counted in each "
