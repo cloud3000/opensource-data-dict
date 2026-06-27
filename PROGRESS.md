@@ -140,6 +140,11 @@
   documenting the from-source (3,234) vs curated-editorial (454) split, the
   durability rule, and pointers to `tools/curated_descriptions.py` and the
   coverage chart.
+- 2026-06-27 — Made the README coverage **badge dynamic**: `gen_diagram.py`
+  writes `diagrams/coverage-badge.json` (shields.io endpoint schema, color
+  steps down with coverage) from the live DB, and the README uses a constant
+  shields `endpoint` URL pointing at that JSON on `main`. Regenerating the docs
+  now keeps the badge honest automatically.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688

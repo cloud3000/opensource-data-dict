@@ -12,6 +12,7 @@ Usage:
 """
 
 import collections
+import json
 import os
 import sqlite3
 from datetime import datetime, timezone
@@ -19,6 +20,7 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(HERE, "..", "datadict.db")
 OUT = os.path.join(HERE, "..", "DATA_MODEL.md")
+BADGE = os.path.join(HERE, "..", "diagrams", "coverage-badge.json")
 
 # Schema columns for the ER diagram (type, name, key, comment).
 CATEGORIES_COLS = [
@@ -129,6 +131,32 @@ def coverage_block(per_cat, tot, total):
     return pie, "\n".join(rows), pct
 
 
+def write_coverage_badge(pct, path=BADGE):
+    """Write a shields.io endpoint JSON so the README badge reflects live
+    description coverage. Color steps down as coverage drops."""
+    if pct >= 100:
+        color = "brightgreen"
+    elif pct >= 90:
+        color = "green"
+    elif pct >= 75:
+        color = "yellowgreen"
+    elif pct >= 50:
+        color = "yellow"
+    else:
+        color = "orange"
+    payload = {
+        "schemaVersion": 1,
+        "label": "descriptions",
+        "message": f"{pct:.0f}%",
+        "color": color,
+    }
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+        f.write("\n")
+    return payload
+
+
 def er_block():
     def cols(rows):
         out = []
@@ -232,6 +260,7 @@ def main():
     parts.append(pie_block(cats))
 
     cov_pie, cov_table, pct = coverage_block(per_cat, cov_tot, total)
+    badge = write_coverage_badge(pct)
     parts.append("\n## 3. Description coverage & provenance\n")
     parts.append(f"Every data item carries a description (**{pct:.0f}% coverage**). "
                  "Most come straight from the upstream source; the rest are "
@@ -256,6 +285,8 @@ def main():
         f.write("\n".join(parts))
     print(f"Wrote {os.path.relpath(OUT)} "
           f"({total} items, {len(cats)} categories, {len(src_tot)} sources)")
+    print(f"Wrote {os.path.relpath(BADGE)} "
+          f"(descriptions {badge['message']}, {badge['color']})")
 
 
 if __name__ == "__main__":
