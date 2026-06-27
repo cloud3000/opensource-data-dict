@@ -103,18 +103,36 @@
   no external rendering service. SVG extracted from rendered DOM; PNG via a
   size-matched screenshot at 2x. Verified images (ER 764x1332, categories
   1804x932, source-map 1462x3766).
+- 2026-06-27 — Filled out the **Manufacturing** category (was 15, all ISA-95
+  `process_segment`). Added the manufacturing modules of the three open ERPs to
+  their fetchers: Odoo `mrp` (production, BOM, routing, work center, work order,
+  unbuild), Tryton `production`/`production_routing`/`production_work`, and
+  ERPNext Manufacturing DocTypes (Work Order, BOM, BOM Item/Operation, Job Card,
+  Operation, Workstation, Routing, Production Plan). Manufacturing 15 → 648.
+- 2026-06-27 — Added `tools/backfill_descriptions.py` and backfilled the 198
+  Manufacturing items that had no upstream description, synthesising factual
+  text from each field's own metadata (entity + Title + AllowedValues). Manu-
+  facturing now has 0 items without a description.
+- 2026-06-27 — Ran the backfill across all remaining categories (added proper
+  entity names for Healthcare/Quality/Stock/HR/Stripe/CDM entities). 256 more
+  filled; the dictionary now has **100% description coverage (0 of 3,688
+  missing)**.
 
 ## Current totals
-- **3,051 data items, 12 categories, 9 source standards** (3092 raw → 3051
+- **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
   after merges; 6 entity + 2 field aliases applied).
-  - Finance/Accounting 612, Sales/Order Mgmt 538, CRM 484, Healthcare 327,
-    Product Master 299, Supply Chain/Logistics 226, HR 195, Inventory/Warehouse
-    131, Procurement 111, Quality Mgmt 81, Maintenance/Asset 32,
-    Manufacturing 15.
+  - Manufacturing 648, Finance/Accounting 612, Sales/Order Mgmt 538, CRM 484,
+    Healthcare 331, Product Master 299, Supply Chain/Logistics 226, HR 195,
+    Inventory/Warehouse 131, Procurement 111, Quality Mgmt 81,
+    Maintenance/Asset 32.
 
 ## TODO (future expansion)
 - [x] Phase 3 dedup pass: merge rule implemented + naming normalized (done).
 - [ ] Tryton / Schema.org / GS1 for cross-source corroboration — these WILL
       trigger real merges (e.g. Product/Material concepts) once added.
-- [ ] Backfill descriptions for ~229 items lacking one (mostly Odoo fields
-      without `help=`); Title is always populated.
+- [x] Backfill descriptions for items lacking one (mostly Odoo fields without
+      `help=` / ERPNext fields without `description`); Title is always
+      populated. Tool added: `tools/backfill_descriptions.py` synthesises a
+      factual description from the item's own metadata (entity + Title +
+      AllowedValues) and survives rebuilds via the `COALESCE` upsert. **Done
+      for every category — 454 filled, 0 remaining DB-wide (100% coverage).**

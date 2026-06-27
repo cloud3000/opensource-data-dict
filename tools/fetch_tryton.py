@@ -42,6 +42,11 @@ TARGETS = {
     "modules/purchase/purchase.py": "Procurement / Purchasing",
     "modules/stock/move.py": "Supply Chain / Logistics",
     "modules/stock/location.py": "Inventory / Warehouse",
+    # --- Manufacturing (production modules) ---
+    "modules/production/production.py": "Manufacturing",
+    "modules/production/bom.py": "Manufacturing",
+    "modules/production_routing/routing.py": "Manufacturing",
+    "modules/production_work/work.py": "Manufacturing",
 }
 
 FIELD_MAP = {
@@ -80,6 +85,9 @@ CATEGORIES = [
     ("Supply Chain / Logistics", "Stock moves and shipments.",
      "Tryton (GPL-3.0)"),
     ("Inventory / Warehouse", "Stock locations and warehouses.",
+     "Tryton (GPL-3.0); ISA-95"),
+    ("Manufacturing",
+     "Productions, bills of materials, routings/operations and work steps.",
      "Tryton (GPL-3.0); ISA-95"),
 ]
 

@@ -33,6 +33,13 @@ TARGETS = {
     "addons/stock/models/stock_picking.py": "Supply Chain / Logistics",
     "addons/stock/models/stock_lot.py": "Inventory / Warehouse",
     "addons/stock/models/stock_quant.py": "Inventory / Warehouse",
+    # --- Manufacturing (mrp module) ---
+    "addons/mrp/models/mrp_production.py": "Manufacturing",
+    "addons/mrp/models/mrp_bom.py": "Manufacturing",
+    "addons/mrp/models/mrp_routing.py": "Manufacturing",
+    "addons/mrp/models/mrp_workcenter.py": "Manufacturing",
+    "addons/mrp/models/mrp_workorder.py": "Manufacturing",
+    "addons/mrp/models/mrp_unbuild.py": "Manufacturing",
 }
 
 # Odoo field class -> (SQL DataType, decimal_scale default or None)
@@ -64,6 +71,10 @@ CATEGORIES = [
      "Odoo (LGPL-3.0); ISA-95"),
     ("Supply Chain / Logistics", "Transfers, pickings and shipment movements.",
      "Odoo (LGPL-3.0)"),
+    ("Manufacturing",
+     "Manufacturing orders, bills of materials, routings/operations, "
+     "work centers and work orders.",
+     "Odoo (LGPL-3.0); ISA-95"),
 ]
 
 

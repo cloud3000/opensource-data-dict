@@ -46,6 +46,28 @@ TARGETS = [
     ("frappe/erpnext", "develop",
      "erpnext/quality_management/doctype/quality_review/quality_review.json",
      "Quality Management"),
+    # --- Manufacturing (ERPNext) ---
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/work_order/work_order.json", "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/bom/bom.json", "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/bom_item/bom_item.json", "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/bom_operation/bom_operation.json",
+     "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/job_card/job_card.json", "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/operation/operation.json", "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/workstation/workstation.json",
+     "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/routing/routing.json", "Manufacturing"),
+    ("frappe/erpnext", "develop",
+     "erpnext/manufacturing/doctype/production_plan/production_plan.json",
+     "Manufacturing"),
     # --- Healthcare (Frappe Health) ---
     ("frappe/health", "develop",
      "healthcare/healthcare/doctype/patient/patient.json", "Healthcare"),
@@ -85,6 +107,10 @@ CATEGORIES = [
     ("Healthcare",
      "Patients, appointments, encounters, vitals and clinical procedures.",
      "Frappe Health (GPL-3.0)"),
+    ("Manufacturing",
+     "Work orders, bills of materials, operations, routings, job cards, "
+     "workstations and production plans.",
+     "ERPNext (GPL-3.0); ISA-95"),
 ]
 
 

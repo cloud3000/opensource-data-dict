@@ -1,13 +1,13 @@
 # Phase 3 - Normalization & Deduplication Report
 
-_Generated 2026-06-14T20:18:29.639702+00:00 (UTC) by build_dict.py._
+_Generated 2026-06-27T06:59:53.619102+00:00 (UTC) by build_dict.py._
 
 ## Summary
 
-- Raw seed items: **3092**
-- Items after normalization + dedup: **3051**
+- Raw seed items: **3729**
+- Items after normalization + dedup: **3688**
 - Cross-source merges performed: **31**
-- Related concepts flagged (not merged): **59**
+- Related concepts flagged (not merged): **75**
 
 All Names normalized to consistent `entity.field` snake_case.
 
@@ -118,6 +118,22 @@ These share a field *name* across sources but belong to **different entities**, 
 | Inventory / Warehouse | `pack_date` | gs1, stock.quant.package | GS1, Odoo |
 | Inventory / Warehouse | `quantity` | material_lot, material_sub_lot, stock.location, stock.products_by_locations, stock.quant | ISA-95 (B2MML), Odoo, Tryton |
 | Inventory / Warehouse | `storage_location` | material_lot, material_sub_lot, stock.location | ISA-95 (B2MML), Tryton |
+| Manufacturing | `code` | mrp.bom, mrp.workcenter, production.bom | Odoo, Tryton |
+| Manufacturing | `company` | bom, job_card, production, production.work, production.work.center, production.work.cycle, production_plan, work_order | ERPNext / Frappe Health, Tryton |
+| Manufacturing | `description` | bom, bom_item, bom_operation, mrp.workcenter.productivity, operation, process_segment, work_order, workstation | ERPNext / Frappe Health, ISA-95 (B2MML), Odoo |
+| Manufacturing | `duration` | mrp.production, mrp.workcenter.productivity, mrp.workorder, production.work.cycle | Odoo, Tryton |
+| Manufacturing | `effective_start_date` | process_segment, production | ISA-95 (B2MML), Tryton |
+| Manufacturing | `name` | mrp.production, mrp.routing.workcenter, mrp.unbuild, mrp.workcenter, mrp.workcenter.productivity.loss, mrp.workcenter.tag, mrp.workorder, production.bom, production.routing, production.routing.operation, production.work.center, production.work.center.category | Odoo, Tryton |
+| Manufacturing | `operation` | bom_item, bom_operation, job_card, production.routing.step, production.work | ERPNext / Frappe Health, Tryton |
+| Manufacturing | `operation_id` | job_card, mrp.bom.byproduct, mrp.bom.line, mrp.workorder | ERPNext / Frappe Health, Odoo |
+| Manufacturing | `origin` | mrp.production, production | Odoo, Tryton |
+| Manufacturing | `planned_start_date` | production, work_order | ERPNext / Frappe Health, Tryton |
+| Manufacturing | `production_capacity` | mrp.production, workstation | ERPNext / Frappe Health, Odoo |
+| Manufacturing | `quantity` | bom, production, production.bom.input, production.bom.tree, production.bom.tree.open.start | ERPNext / Frappe Health, Tryton |
+| Manufacturing | `routing` | bom, production.routing.step, production.routing_production.bom | ERPNext / Frappe Health, Tryton |
+| Manufacturing | `state` | mrp.production, mrp.unbuild, mrp.workorder, production, production.work, production.work.cycle | Odoo, Tryton |
+| Manufacturing | `type` | mrp.bom, production | Odoo, Tryton |
+| Manufacturing | `warehouse` | production, production.work, production.work.center, production_plan, workstation | ERPNext / Frappe Health, Tryton |
 | Product Master Data | `category` | product, product.template_product.category, product.template_product.category.all | Schema.org, Tryton |
 | Product Master Data | `description` | material_class, material_definition, product | ISA-95 (B2MML), Microsoft CDM, Schema.org, Stripe API, Tryton |
 | Product Master Data | `id` | material_class, material_definition, price, product | ISA-95 (B2MML), Stripe API |
