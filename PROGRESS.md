@@ -134,7 +134,12 @@
   `diagrams/description-coverage.{svg,png}`. Current: 3,234 from source, 454
   curated, 0 missing (100%).
 - 2026-06-27 — Linked and embedded the new coverage diagram in `README.md`
-  (Diagrams section) with a one-line note on 100% coverage.
+  (Diagrams section) with a one-line note on 100% coverage; embeds use PNG for
+  reliable GitHub rendering, table links keep the scalable SVGs.
+- 2026-06-27 — Added a **Description provenance** section to `sources.md`
+  documenting the from-source (3,234) vs curated-editorial (454) split, the
+  durability rule, and pointers to `tools/curated_descriptions.py` and the
+  coverage chart.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
