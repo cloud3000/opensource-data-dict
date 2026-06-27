@@ -1,6 +1,7 @@
 # Contributing
 
 [![Build](https://github.com/cloud3000/opensource-data-dict/actions/workflows/build.yml/badge.svg)](https://github.com/cloud3000/opensource-data-dict/actions/workflows/build.yml)
+[![Descriptions](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcloud3000%2Fopensource-data-dict%2Fmain%2Fdiagrams%2Fcoverage-badge.json)](DATA_MODEL.md#3-description-coverage--provenance)
 
 Thanks for your interest in improving the **Business Application Data
 Dictionary**! Contributions of new sources, corrections, better descriptions,
