@@ -197,6 +197,12 @@
 - 2026-06-27 — Cut release **v1.1.0**: rolled the `[Unreleased]` find.py work
   into a CHANGELOG `[1.1.0]` section, updated compare links, bumped the README
   latest-release pointer, tagged `v1.1.0`, and published the GitHub Release.
+- 2026-06-27 — Added `tools/export_ddl.py`: graduates find.py's `--ddl` into a
+  full multi-table exporter with real `FOREIGN KEY`s derived from the
+  dictionary's relationship hints (`links to`/`references`; polymorphic and
+  `collection of` handled), surrogate-key modeling, topological ordering, and
+  `--dialect sqlite|postgres|mysql` (SQLite self-validated; manufacturing =
+  37 tables/59 FKs). Logged under CHANGELOG `[Unreleased]`.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
