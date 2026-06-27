@@ -165,6 +165,9 @@
   no empty categories — asserts meaning, not byte-identity). README badge
   switched to the live Actions badge. First runs passed green on the PR and on
   `main`.
+- 2026-06-27 — Added the live Actions build badge to `CONTRIBUTING.md` and a
+  note that CI runs the build + `tools/ci_check.py` on every PR (with the local
+  command to mirror it).
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
