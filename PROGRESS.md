@@ -194,6 +194,9 @@
 - 2026-06-27 — Documented `tools/find.py` in the README ("Find fields by
   business term" section): the four-layer resolver, the `SEARCH_ALIASES` map,
   CLI examples, and the `--ddl` scaffolding output.
+- 2026-06-27 — Cut release **v1.1.0**: rolled the `[Unreleased]` find.py work
+  into a CHANGELOG `[1.1.0]` section, updated compare links, bumped the README
+  latest-release pointer, tagged `v1.1.0`, and published the GitHub Release.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
