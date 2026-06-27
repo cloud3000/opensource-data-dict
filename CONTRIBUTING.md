@@ -1,5 +1,7 @@
 # Contributing
 
+[![Build](https://github.com/cloud3000/opensource-data-dict/actions/workflows/build.yml/badge.svg)](https://github.com/cloud3000/opensource-data-dict/actions/workflows/build.yml)
+
 Thanks for your interest in improving the **Business Application Data
 Dictionary**! Contributions of new sources, corrections, better descriptions,
 and tooling are all welcome.
@@ -95,7 +97,14 @@ python3 build_dict.py            # rebuild; review the printed stats
 rm -f datadict.db && python3 build_dict.py
 sqlite3 /tmp/check.db < datadict.sql && echo "datadict.sql reloads OK"
 python3 tools/gen_diagram.py     # refresh DATA_MODEL.md if categories/sources changed
+python3 tools/ci_check.py        # same invariant gate CI runs (see below)
 ```
+
+**CI runs automatically on every PR** ([`.github/workflows/build.yml`](.github/workflows/build.yml)):
+it builds the DB from the committed seeds, regenerates the data model, and runs
+`tools/ci_check.py` (asserts seeds import, the curated map resolves, 0 missing
+descriptions, no empty categories). The build badge above reflects `main`'s
+status — keep it green.
 
 Checklist:
 
