@@ -1,6 +1,8 @@
 # Business Application Data Dictionary
 
 [![Descriptions](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcloud3000%2Fopensource-data-dict%2Fmain%2Fdiagrams%2Fcoverage-badge.json)](DATA_MODEL.md#3-description-coverage--provenance)
+[![Code license: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
+[![Data license: CC BY-SA 4.0](https://img.shields.io/badge/data-CC_BY--SA_4.0-blue)](DATA_LICENSE)
 
 A comprehensive, **open-source** business data dictionary stored in SQLite
 (`datadict.db`, with a full schema + data dump in `datadict.sql`). It collects
