@@ -121,8 +121,12 @@
   hand-curated editorial descriptions in `tools/curated_descriptions.py`
   (CURATED map keyed by item Name), applied via
   `python3 tools/backfill_descriptions.py --curated` (overwrites placeholders;
-  idempotent; durable through the COALESCE upsert). Manufacturing's 198 synth-
-  esised descriptions are intentionally left as-is.
+  idempotent; durable through the COALESCE upsert).
+- 2026-06-27 — Curated the remaining 198 Manufacturing descriptions too
+  (BOM/BOM item/operation, job card, work order, production plan, workstation,
+  routing, and Odoo mrp.* fields). The CURATED map now holds all 454 entries
+  and **every synthesised placeholder is gone — 0 of 3,688 items hold synthesised
+  or empty descriptions**.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
