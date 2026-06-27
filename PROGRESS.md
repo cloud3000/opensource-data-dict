@@ -154,6 +154,10 @@
   in-page coverage/provenance section.
 - 2026-06-27 — Added two license badges to the README (code MIT → `LICENSE`,
   data CC BY-SA 4.0 → `DATA_LICENSE`), reflecting the dual license.
+- 2026-06-27 — Added a **static** `build: passing` badge to the README (links
+  to Quick start). No CI workflow behind it yet — build was confirmed green
+  manually (`build_dict.py` + `gen_diagram.py` run clean). Future: add a GitHub
+  Actions workflow and swap for the live Actions badge.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
