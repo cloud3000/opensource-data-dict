@@ -211,8 +211,9 @@ quantity, always record provenance.**
 
 ## Changelog
 
-Release-facing changes are in **[CHANGELOG.md](CHANGELOG.md)** (current:
-**v1.0.0**). The granular development log lives in [`PROGRESS.md`](PROGRESS.md).
+Release-facing changes are in **[CHANGELOG.md](CHANGELOG.md)** (latest release:
+**[v1.0.0](https://github.com/cloud3000/opensource-data-dict/releases/tag/v1.0.0)**).
+The granular development log lives in [`PROGRESS.md`](PROGRESS.md).
 
 ## Contributors
 
