@@ -149,6 +149,9 @@
   SVG (200, contains "descriptions"/"100%") from the JSON on `main`, and the
   GitHub GFM renderer serves it as a camo-proxied `<img>` wrapped in the link
   to the coverage section.
+- 2026-06-27 — `gen_diagram.py` now also emits the dynamic coverage badge at
+  the top of `DATA_MODEL.md` (same endpoint JSON as the README), linking to the
+  in-page coverage/provenance section.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
