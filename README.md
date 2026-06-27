@@ -209,6 +209,16 @@ seed-module contract, how to add a source, the aliasing/merge rules, and the
 pre-PR checklist. Core rule: **public/open-source sources only, accuracy over
 quantity, always record provenance.**
 
+## Contributors
+
+- **Michael Anderson** ([@cloud3000](https://github.com/cloud3000)) — creator & maintainer
+- **Claude** (Anthropic) — AI pair-programmer; contributions are co-authored via
+  `Co-Authored-By` trailers in the commit history
+
+The full, always-current list is on the
+[contributors graph](https://github.com/cloud3000/opensource-data-dict/graphs/contributors).
+New contributors welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License & attribution
 
 This repository is **dual-licensed** to reflect its two layers:
