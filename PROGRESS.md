@@ -113,6 +113,10 @@
   Manufacturing items that had no upstream description, synthesising factual
   text from each field's own metadata (entity + Title + AllowedValues). Manu-
   facturing now has 0 items without a description.
+- 2026-06-27 — Ran the backfill across all remaining categories (added proper
+  entity names for Healthcare/Quality/Stock/HR/Stripe/CDM entities). 256 more
+  filled; the dictionary now has **100% description coverage (0 of 3,688
+  missing)**.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
@@ -126,11 +130,9 @@
 - [x] Phase 3 dedup pass: merge rule implemented + naming normalized (done).
 - [ ] Tryton / Schema.org / GS1 for cross-source corroboration — these WILL
       trigger real merges (e.g. Product/Material concepts) once added.
-- [~] Backfill descriptions for items lacking one (mostly Odoo fields without
+- [x] Backfill descriptions for items lacking one (mostly Odoo fields without
       `help=` / ERPNext fields without `description`); Title is always
       populated. Tool added: `tools/backfill_descriptions.py` synthesises a
       factual description from the item's own metadata (entity + Title +
-      AllowedValues) and survives rebuilds via the `COALESCE` upsert. Done for
-      **Manufacturing** (198 filled, 0 remaining). ~256 remain in other
-      categories (Healthcare 130, Quality 50, ...) — run
-      `python3 tools/backfill_descriptions.py --all` (or `--category NAME`).
+      AllowedValues) and survives rebuilds via the `COALESCE` upsert. **Done
+      for every category — 454 filled, 0 remaining DB-wide (100% coverage).**

@@ -68,6 +68,44 @@ ENTITY_NAMES = {
     "production.work": "Work step",
     # ISA-95
     "process_segment": "Process segment",
+    # --- Other categories ---
+    # Healthcare (Frappe Health)
+    "patient": "Patient",
+    "patient_appointment": "Patient appointment",
+    "patient_encounter": "Patient encounter",
+    "clinical_procedure": "Clinical procedure",
+    "lab_test": "Lab test",
+    "vital_signs": "Vital signs",
+    # Quality Management (ERPNext)
+    "quality_inspection": "Quality inspection",
+    "quality_inspection_reading": "Quality inspection reading",
+    "non_conformance": "Non-conformance",
+    "quality_goal": "Quality goal",
+    "quality_action": "Quality action",
+    "quality_procedure": "Quality procedure",
+    "quality_review": "Quality review",
+    # Odoo (stock / HR / purchase)
+    "stock.picking": "Stock transfer / picking",
+    "stock.picking.type": "Operation (picking) type",
+    "stock.quant": "Stock quantity (on-hand)",
+    "stock.lot": "Lot / serial number",
+    "hr.employee": "Employee",
+    "hr.department": "Department",
+    "hr.job": "Job position",
+    "purchase_order": "Purchase order",
+    # Stripe API
+    "customer": "Customer",
+    "invoice": "Invoice",
+    "invoiceitem": "Invoice line item",
+    "quote": "Quote",
+    "subscription": "Subscription",
+    "charge": "Charge",
+    "refund": "Refund",
+    "payment_intent": "Payment intent",
+    # Microsoft CDM / Schema.org
+    "lead": "Lead",
+    "order": "Order",
+    "product": "Product",
 }
 
 
