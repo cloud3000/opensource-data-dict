@@ -173,6 +173,11 @@
 - 2026-06-27 — Added a **Contributors** section to the README (Michael Anderson
   — creator/maintainer; Claude — AI pair-programmer, co-authored via commit
   trailers), sourced from git history, with a link to the contributors graph.
+- 2026-06-27 — Cut the first tagged release **v1.0.0**: added `CHANGELOG.md`
+  (Keep a Changelog format) with the 1.0.0 summary, README/CONTRIBUTING
+  pointers documenting the split (PROGRESS = granular dev log, CHANGELOG =
+  curated per-release summary), tagged `v1.0.0`, and published the GitHub
+  Release. Future release-worthy changes go under CHANGELOG `## [Unreleased]`.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
