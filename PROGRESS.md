@@ -186,6 +186,11 @@
   vocabulary like billing/payee/shipping, plus a `--ddl` flag that emits a
   validated `CREATE TABLE` per matched entity. Groundwork for the RAD/DDL
   exporter. Logged under CHANGELOG `[Unreleased]`.
+- 2026-06-27 — Expanded `find.py`'s `SEARCH_ALIASES` from 12 → 55 business terms
+  across all domains, each verified to fire and resolve to >0 items (dropped
+  shadowed/false-positive candidates like `asset`/`ar`). Alias targets now
+  resolve entity-first so a bare target means the entity, not the whole category
+  (e.g. `fulfillment` 637 → 289).
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
