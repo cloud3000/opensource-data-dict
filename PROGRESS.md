@@ -191,6 +191,9 @@
   shadowed/false-positive candidates like `asset`/`ar`). Alias targets now
   resolve entity-first so a bare target means the entity, not the whole category
   (e.g. `fulfillment` 637 → 289).
+- 2026-06-27 — Documented `tools/find.py` in the README ("Find fields by
+  business term" section): the four-layer resolver, the `SEARCH_ALIASES` map,
+  CLI examples, and the `--ddl` scaffolding output.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
