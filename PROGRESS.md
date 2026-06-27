@@ -174,6 +174,23 @@
     Inventory/Warehouse 131, Procurement 111, Quality Mgmt 81,
     Maintenance/Asset 32.
 
+## CI status
+- **Workflow:** [`.github/workflows/build.yml`](.github/workflows/build.yml) —
+  runs on push to `main` and on every pull request.
+- **Steps:** (1) build the DB from the **committed seeds** (no `fetch_*.py`, so
+  CI stays offline/deterministic); (2) regenerate `DATA_MODEL.md` + the coverage
+  badge JSON to prove the generators run; (3) run `tools/ci_check.py`.
+- **Invariant gate (`tools/ci_check.py`):** all seed modules import, the curated
+  map imports and every entry resolves to a real item, **0 missing
+  descriptions**, no empty categories, item count > 0. Asserts *meaning*, not
+  byte-identity (rebuilds drift on timestamps), and is path-independent.
+- **Badge:** the README "build" badge is the live Actions badge
+  (`actions/workflows/build.yml/badge.svg`), so it reflects the real status of
+  `main`.
+- **Run it locally:** `python3 build_dict.py --no-export && python3
+  tools/gen_diagram.py && python3 tools/ci_check.py`.
+- **Latest:** first runs (PR #19, and the `main` push on merge) passed green.
+
 ## TODO (future expansion)
 - [x] Phase 3 dedup pass: merge rule implemented + naming normalized (done).
 - [ ] Tryton / Schema.org / GS1 for cross-source corroboration — these WILL
