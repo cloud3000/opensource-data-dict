@@ -47,9 +47,16 @@ Schema and source/category maps live in **[`DATA_MODEL.md`](DATA_MODEL.md)**
 |---|---|
 | [ER diagram](diagrams/er-diagram.svg) | two-table star: `Categories` → `DataItems` |
 | [Categories](diagrams/categories.svg) | items per category (pie) |
+| [Description coverage](diagrams/description-coverage.svg) | description provenance: from-source vs curated (pie) |
 | [Source→Category map](diagrams/source-category-map.svg) | which standards feed which categories |
 
 ![Categories](diagrams/categories.svg)
+
+Every item is described (**100% coverage**) — 3,234 descriptions come straight
+from the upstream source and 454 are curated editorial text added where the
+source provided none:
+
+![Description coverage](diagrams/description-coverage.svg)
 
 ---
 
