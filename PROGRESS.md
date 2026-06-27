@@ -156,8 +156,15 @@
   data CC BY-SA 4.0 → `DATA_LICENSE`), reflecting the dual license.
 - 2026-06-27 — Added a **static** `build: passing` badge to the README (links
   to Quick start). No CI workflow behind it yet — build was confirmed green
-  manually (`build_dict.py` + `gen_diagram.py` run clean). Future: add a GitHub
-  Actions workflow and swap for the live Actions badge.
+  manually (`build_dict.py` + `gen_diagram.py` run clean).
+- 2026-06-27 — Replaced the static badge with **real CI**: added
+  `.github/workflows/build.yml` (on push to main / PR — builds the DB from the
+  committed seeds without re-fetching, regenerates the data model + coverage
+  badge, then runs `tools/ci_check.py`) and `tools/ci_check.py` (semantic
+  invariant gate: seeds import, curated map resolves, 0 missing descriptions,
+  no empty categories — asserts meaning, not byte-identity). README badge
+  switched to the live Actions badge. First runs passed green on the PR and on
+  `main`.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
