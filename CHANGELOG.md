@@ -10,7 +10,12 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 ## [Unreleased]
 
-_No unreleased changes yet._
+### Added
+
+- `tools/find.py` — find data items by a business term via a layered resolver
+  (category → entity → alias → keyword), with a reviewable `SEARCH_ALIASES` map
+  for business vocabulary (e.g. `billing → invoice`) and a `--ddl` flag that
+  emits a validated `CREATE TABLE` per matched entity.
 
 ## [1.0.0] - 2026-06-27
 
