@@ -180,6 +180,12 @@
   Release. Future release-worthy changes go under CHANGELOG `## [Unreleased]`.
 - 2026-06-27 — Linked the v1.0.0 reference in the README Changelog section to the
   published GitHub release.
+- 2026-06-27 — Added `tools/find.py`: find data items by a business term via a
+  layered resolver (category → entity → alias → keyword) with a reviewable
+  `SEARCH_ALIASES` map (entity/category-level, not per-item) for business
+  vocabulary like billing/payee/shipping, plus a `--ddl` flag that emits a
+  validated `CREATE TABLE` per matched entity. Groundwork for the RAD/DDL
+  exporter. Logged under CHANGELOG `[Unreleased]`.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
