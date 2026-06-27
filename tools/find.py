@@ -46,18 +46,71 @@ DB = os.path.join(ROOT, "datadict.db")
 # name -- those resolve on their own via layers 1-2.
 # ---------------------------------------------------------------------------
 SEARCH_ALIASES = {
-    "billing":   ["invoice", "invoiceitem", "charge", "payment_intent"],
-    "payee":     ["payout", "refund"],
-    "payer":     ["customer", "charge"],
-    "shipping":  ["stock.picking", "stock.move"],
-    "logistics": ["Supply Chain / Logistics"],
-    "stock":     ["stock.quant", "stock.lot", "material_lot"],
-    "warehouse": ["Inventory / Warehouse"],
-    "vendor":    ["purchase_order", "payout"],
-    "supplier":  ["purchase_order"],
-    "hr":        ["Human Resources"],
-    "people":    ["person", "patient", "customer", "hr.employee"],
-    "bom":       ["bom", "bom_item", "bom_operation", "mrp.bom"],
+    # --- Finance / billing ---
+    "billing":      ["invoice", "invoiceitem", "charge", "payment_intent"],
+    "payee":        ["payout", "refund"],
+    "payer":        ["customer", "charge"],
+    "receivable":   ["invoice", "invoiceitem"],
+    "payable":      ["purchase_order", "payout"],
+    "ap":           ["purchase_order", "payout"],
+    "ledger":       ["account.move", "account.move.line"],
+    "journal":      ["account.move", "account.move.line"],
+    "gl":           ["account.move", "account.move.line"],
+    "tax":          ["account.invoice.tax", "invoice"],
+    # --- CRM / parties ---
+    "client":       ["customer", "account", "party.party", "organization"],
+    "company":      ["organization", "account"],
+    "partner":      ["party.party", "organization", "account"],
+    "prospect":     ["lead", "opportunity"],
+    "address":      ["party.address"],
+    # --- Sales ---
+    "quotation":    ["quote", "offer"],
+    "deal":         ["opportunity", "quote"],
+    "pricing":      ["price", "offer"],
+    # --- Procurement ---
+    "po":           ["purchase_order"],
+    "rfq":          ["purchase_order"],
+    "vendor":       ["purchase_order", "payout"],
+    "supplier":     ["purchase_order"],
+    # --- Inventory / supply chain ---
+    "shipping":     ["stock.picking", "stock.move"],
+    "delivery":     ["stock.picking", "stock.move"],
+    "transfer":     ["stock.picking", "stock.move"],
+    "fulfillment":  ["stock.picking", "order"],
+    "lot":          ["stock.lot", "material_lot"],
+    "batch":        ["stock.lot", "material_lot"],
+    "serial":       ["stock.lot", "material_lot"],
+    # --- Human Resources ---
+    "employee":     ["hr.employee", "person", "personnel_class"],
+    "staff":        ["hr.employee", "person"],
+    "worker":       ["hr.employee", "person"],
+    "department":   ["hr.department"],
+    "position":     ["hr.job"],
+    "people":       ["person", "patient", "customer", "hr.employee"],
+    # --- Healthcare ---
+    "appointment":  ["patient_appointment"],
+    "visit":        ["patient_encounter", "encounter"],
+    "vitals":       ["vital_signs"],
+    "diagnosis":    ["clinical_procedure", "observation"],
+    "doctor":       ["practitioner"],
+    "physician":    ["practitioner"],
+    "provider":     ["practitioner"],
+    "insurance":    ["coverage"],
+    # --- Manufacturing ---
+    "mfg":          ["Manufacturing"],
+    "workcenter":   ["mrp.workcenter", "workstation"],
+    "assembly":     ["bom", "mrp.bom", "work_order"],
+    # --- Quality ---
+    "qa":           ["Quality Management"],
+    "qc":           ["Quality Management"],
+    "inspection":   ["quality_inspection", "quality_inspection_reading"],
+    "defect":       ["non_conformance"],
+    "nonconformance": ["non_conformance"],
+    # --- Product ---
+    "sku":          ["product", "price"],
+    "catalog":      ["product", "price"],
+    "item":         ["product", "price"],
+    "barcode":      ["gs1"],
 }
 
 FIELD_COLS = ("Name", "Title", "Description", "DataType", "ByteLength",
@@ -121,7 +174,11 @@ def resolve(conn, term):
     if term.lower() in SEARCH_ALIASES:
         seen, items, targets = set(), [], []
         for tgt in SEARCH_ALIASES[term.lower()]:
-            sub = _items_for_category(conn, tgt) or _items_for_entity(conn, tgt)
+            # entity-first: a target like "order" means the order entity, not
+            # the whole "Sales / Order Management" category. Multi-word category
+            # names (e.g. "Quality Management") won't match an entity and fall
+            # through to the category lookup.
+            sub = _items_for_entity(conn, tgt) or _items_for_category(conn, tgt)
             if sub:
                 targets.append(tgt)
             for r in sub:

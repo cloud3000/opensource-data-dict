@@ -14,8 +14,10 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 - `tools/find.py` — find data items by a business term via a layered resolver
   (category → entity → alias → keyword), with a reviewable `SEARCH_ALIASES` map
-  for business vocabulary (e.g. `billing → invoice`) and a `--ddl` flag that
-  emits a validated `CREATE TABLE` per matched entity.
+  of ~55 business terms (billing, payee, receivable, shipping, employee,
+  appointment, inspection, …) and a `--ddl` flag that emits a validated
+  `CREATE TABLE` per matched entity. Alias targets resolve entity-first for
+  precision.
 
 ## [1.0.0] - 2026-06-27
 
