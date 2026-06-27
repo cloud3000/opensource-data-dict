@@ -34,6 +34,7 @@ MERMAID_URL = "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
 NAME_HINTS = [
     ("entity-relationship", "er-diagram"),
     ("categories by", "categories"),
+    ("description coverage", "description-coverage"),
     ("sources feed", "source-category-map"),
 ]
 
