@@ -84,6 +84,55 @@ seeds). See the **[Query Cookbook](QUERY_COOKBOOK.md)** for ready-to-run SQL.
 
 ---
 
+## Find fields by business term
+
+`tools/find.py` looks up data items by a plain business word and tells you how
+it matched. A term resolves through four layers, first hit wins:
+
+1. **category** — `inventory`, `accounting`, `quality` → every item in that category
+2. **entity** — `patient`, `work_order`, `invoice` → that object's field family
+3. **alias** — business vocabulary the source systems don't name directly
+   (`billing`, `payee`, `shipping`, `appointment`, …) is mapped to real
+   entities via a reviewable `SEARCH_ALIASES` map (~55 terms)
+4. **keyword** — substring fallback across name/title/description (flagged as scattered)
+
+```bash
+python3 tools/find.py billing                 # alias -> invoice/charge/...
+python3 tools/find.py patient invoice          # multiple terms (union)
+python3 tools/find.py appointment --ddl        # emit a CREATE TABLE
+python3 tools/find.py inventory --limit 0      # list every match
+```
+
+```text
+$ python3 tools/find.py billing --limit 3
+=== 'billing'  [~ alias -> [invoice, invoiceitem, charge, payment_intent]]  382 items, 5 entities, 1 categories
+    invoice.account              INTEGER   Account
+    invoice.account_country      VARCHAR   account_country
+    invoice.account_id           VARCHAR   Account
+    ... +379 more
+```
+
+The **`--ddl`** flag turns a match into a ready-to-run `CREATE TABLE` per
+entity — types, lengths, `NOT NULL`, and enum `CHECK`s all come from the
+dictionary metadata — handy for scaffolding an app schema:
+
+```sql
+$ python3 tools/find.py appointment --ddl
+-- patient_appointment (48 fields)
+CREATE TABLE patient_appointment (
+    patient_appointment_id INTEGER PRIMARY KEY,
+    appointment_date  DATE NOT NULL,
+    appointment_for   VARCHAR(255) NOT NULL
+                        CHECK (appointment_for IN ('Practitioner', 'Department', 'Service Unit')),
+    ...
+);
+```
+
+Business terms that don't yet resolve well are a one-line addition to
+`SEARCH_ALIASES` in `tools/find.py`.
+
+---
+
 ## Schema
 
 ```sql
