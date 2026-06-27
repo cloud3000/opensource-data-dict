@@ -127,6 +127,14 @@
   routing, and Odoo mrp.* fields). The CURATED map now holds all 454 entries
   and **every synthesised placeholder is gone — 0 of 3,688 items hold synthesised
   or empty descriptions**.
+- 2026-06-27 — Added a **description coverage / provenance** chart to the
+  diagrams. `tools/gen_diagram.py` now emits a "Description provenance" pie plus
+  a per-category coverage table (DATA_MODEL.md §3), classifying each item as
+  from-source / curated / missing; `tools/render_diagrams.py` renders it to
+  `diagrams/description-coverage.{svg,png}`. Current: 3,234 from source, 454
+  curated, 0 missing (100%).
+- 2026-06-27 — Linked and embedded the new coverage diagram in `README.md`
+  (Diagrams section) with a one-line note on 100% coverage.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
