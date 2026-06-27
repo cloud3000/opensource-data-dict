@@ -168,6 +168,8 @@
 - 2026-06-27 — Added the live Actions build badge to `CONTRIBUTING.md` and a
   note that CI runs the build + `tools/ci_check.py` on every PR (with the local
   command to mirror it).
+- 2026-06-27 — Added the dynamic description-coverage badge to `CONTRIBUTING.md`
+  too (next to the build badge; same shields endpoint JSON as README/DATA_MODEL).
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
