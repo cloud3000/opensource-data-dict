@@ -131,6 +131,17 @@ CREATE TABLE patient_appointment (
 Business terms that don't yet resolve well are a one-line addition to
 `SEARCH_ALIASES` in `tools/find.py`.
 
+For a **full multi-table schema with foreign keys**, use `tools/export_ddl.py`.
+It resolves the same terms, then emits one `CREATE TABLE` per entity with real
+`FOREIGN KEY` constraints derived from the dictionary's relationship hints,
+ordered so the DDL loads, in your choice of dialect:
+
+```bash
+python3 tools/export_ddl.py manufacturing                 # SQLite (self-validated)
+python3 tools/export_ddl.py billing patient --dialect postgres
+python3 tools/export_ddl.py inventory --dialect mysql --out schema.sql
+```
+
 ---
 
 ## Schema
