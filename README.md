@@ -209,6 +209,11 @@ seed-module contract, how to add a source, the aliasing/merge rules, and the
 pre-PR checklist. Core rule: **public/open-source sources only, accuracy over
 quantity, always record provenance.**
 
+## Changelog
+
+Release-facing changes are in **[CHANGELOG.md](CHANGELOG.md)** (current:
+**v1.0.0**). The granular development log lives in [`PROGRESS.md`](PROGRESS.md).
+
 ## Contributors
 
 - **Michael Anderson** ([@cloud3000](https://github.com/cloud3000)) — creator & maintainer
