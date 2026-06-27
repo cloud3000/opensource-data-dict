@@ -178,6 +178,8 @@
   pointers documenting the split (PROGRESS = granular dev log, CHANGELOG =
   curated per-release summary), tagged `v1.0.0`, and published the GitHub
   Release. Future release-worthy changes go under CHANGELOG `## [Unreleased]`.
+- 2026-06-27 — Linked the v1.0.0 reference in the README Changelog section to the
+  published GitHub release.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
