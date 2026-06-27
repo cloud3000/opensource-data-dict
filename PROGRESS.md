@@ -103,14 +103,20 @@
   no external rendering service. SVG extracted from rendered DOM; PNG via a
   size-matched screenshot at 2x. Verified images (ER 764x1332, categories
   1804x932, source-map 1462x3766).
+- 2026-06-27 — Filled out the **Manufacturing** category (was 15, all ISA-95
+  `process_segment`). Added the manufacturing modules of the three open ERPs to
+  their fetchers: Odoo `mrp` (production, BOM, routing, work center, work order,
+  unbuild), Tryton `production`/`production_routing`/`production_work`, and
+  ERPNext Manufacturing DocTypes (Work Order, BOM, BOM Item/Operation, Job Card,
+  Operation, Workstation, Routing, Production Plan). Manufacturing 15 → 648.
 
 ## Current totals
-- **3,051 data items, 12 categories, 9 source standards** (3092 raw → 3051
+- **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
   after merges; 6 entity + 2 field aliases applied).
-  - Finance/Accounting 612, Sales/Order Mgmt 538, CRM 484, Healthcare 327,
-    Product Master 299, Supply Chain/Logistics 226, HR 195, Inventory/Warehouse
-    131, Procurement 111, Quality Mgmt 81, Maintenance/Asset 32,
-    Manufacturing 15.
+  - Manufacturing 648, Finance/Accounting 612, Sales/Order Mgmt 538, CRM 484,
+    Healthcare 331, Product Master 299, Supply Chain/Logistics 226, HR 195,
+    Inventory/Warehouse 131, Procurement 111, Quality Mgmt 81,
+    Maintenance/Asset 32.
 
 ## TODO (future expansion)
 - [x] Phase 3 dedup pass: merge rule implemented + naming normalized (done).

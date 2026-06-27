@@ -5,7 +5,7 @@ A comprehensive, **open-source** business data dictionary stored in SQLite
 standardized business data items across major industries and functional areas,
 extracted **only from public / open-source resources**.
 
-> **3,051 data items · 12 categories · 9 open-source standards** &nbsp;|&nbsp;
+> **3,688 data items · 12 categories · 9 open-source standards** &nbsp;|&nbsp;
 > 31 items corroborated across multiple sources.
 
 ---
@@ -14,24 +14,23 @@ extracted **only from public / open-source resources**.
 
 | Category | Items | Category | Items |
 |---|---:|---|---:|
-| Finance / Accounting | 612 | Inventory / Warehouse | 131 |
-| Sales / Order Management | 538 | Procurement / Purchasing | 111 |
-| Customer Relationship Management (CRM) | 484 | Quality Management | 81 |
-| Healthcare | 327 | Maintenance / Asset Management | 32 |
-| Product Master Data | 299 | Manufacturing | 15 |
-| Supply Chain / Logistics | 226 | | |
-| Human Resources | 195 | | |
+| Manufacturing | 648 | Supply Chain / Logistics | 226 |
+| Finance / Accounting | 612 | Human Resources | 195 |
+| Sales / Order Management | 538 | Inventory / Warehouse | 131 |
+| Customer Relationship Management (CRM) | 484 | Procurement / Purchasing | 111 |
+| Healthcare | 331 | Quality Management | 81 |
+| Product Master Data | 299 | Maintenance / Asset Management | 32 |
 
 ## Sources (all public / open-source)
 
 | Standard | License | Items |
 |---|---|---:|
 | Microsoft Common Data Model (CDM) | CDLA-Permissive-2.0 | 712 |
-| Tryton | GPL-3.0 | 559 |
+| Tryton | GPL-3.0 | 634 |
+| ERPNext / Frappe Health | GPL-3.0 | 610 |
+| Odoo | LGPL-3.0 | 546 |
 | Stripe API (OpenAPI) | MIT | 393 |
 | Schema.org | CC BY-SA 3.0 | 373 |
-| ERPNext / Frappe Health | GPL-3.0 | 319 |
-| Odoo | LGPL-3.0 | 275 |
 | GS1 (Barcode Syntax Dictionary) | Apache-2.0 | 220 |
 | ISA-95 / B2MML | Royalty-free (MESA) | 122 |
 | HL7 FHIR (R4) | CC0 (public domain) | 116 |
