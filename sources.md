@@ -76,6 +76,30 @@ attribution".
   the **Stripe** OpenAPI document (MIT-licensed open-source artifact published
   by Stripe; used as an open spec, not scraped). See `seeds/openapi.py`.
 
+## Description provenance
+
+Every data item carries a `Description` (**100% coverage**), drawn from one of
+two places:
+
+- **From source** (3,234 items) — the description shipped with the upstream
+  model (Odoo `help=`, ERPNext DocType `description`, CDM `description`, FHIR
+  element definitions, etc.) and is used verbatim.
+- **Curated editorial** (454 items) — where the source exposed only a label and
+  no description text, a factual description was written from the field's own
+  metadata (entity + Title + AllowedValues). These live in
+  [`tools/curated_descriptions.py`](tools/curated_descriptions.py) as a
+  reviewable `CURATED` map keyed by item Name, applied with
+  `python3 tools/backfill_descriptions.py --curated`. They restate what the
+  field already declares, so no external claim is introduced, and they are
+  **durable** — `build_dict.py` only fills a NULL description, so curated text
+  survives rebuilds and yields automatically if the source later gains real
+  help text.
+
+The from-source / curated split is charted per category in
+[`DATA_MODEL.md`](DATA_MODEL.md) §3 ("Description coverage & provenance"), with
+a static export at
+[`diagrams/description-coverage.svg`](diagrams/description-coverage.svg).
+
 ## Planned / candidate sources (future expansion)
 
 - More OpenAPI specs from open projects (drop-in via `SPECS` in fetch_openapi.py)
