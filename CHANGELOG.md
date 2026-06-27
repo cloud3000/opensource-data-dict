@@ -10,7 +10,13 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 ## [Unreleased]
 
-_No unreleased changes yet._
+### Added
+
+- `tools/export_ddl.py` — export `CREATE TABLE` DDL for entities resolved from
+  business terms, with real `FOREIGN KEY` constraints derived from the
+  dictionary's relationship hints (`links to` / `references`; polymorphic and
+  `collection of` handled), surrogate-key modeling, dependency-ordered output,
+  and `--dialect sqlite|postgres|mysql`. SQLite output is self-validated.
 
 ## [1.1.0] - 2026-06-27
 
