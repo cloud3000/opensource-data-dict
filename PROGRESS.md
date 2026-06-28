@@ -222,6 +222,13 @@
 - 2026-06-27 — Cut docs-only patch release **v1.2.1**: bundled the QUERY_COOKBOOK
   section 10 into a CHANGELOG `[1.2.1]` section, updated compare links, bumped the
   README latest-release pointer, tagged `v1.2.1`, and published the GitHub Release.
+- 2026-06-28 — Added a **UI / resource-governance projection**:
+  `tools/build_ui_dict.py` derives `ui_datadict.db` + `ui_datadict.sql` from
+  `datadict.db` (read-only). Categories → Groups → UI_DataItems (3-level):
+  entity = group (43 wizard/junction entities collapse into one `Wizard` group;
+  gs1 kept) → 120 groups; `Name` reduced to the field; UTF-8 implied types with
+  `CharLength` policy, `ByteLength = CharLength*4`, and `ValidationSpecs` (source
+  mask or generated). 12 cats / 120 groups / 3,688 items. CHANGELOG `[Unreleased]`.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
