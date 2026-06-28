@@ -10,6 +10,10 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 ## [Unreleased]
 
+_No unreleased changes yet._
+
+## [1.2.0] - 2026-06-27
+
 ### Added
 
 - `tools/export_ddl.py` — export `CREATE TABLE` DDL for entities resolved from
@@ -63,6 +67,7 @@ First tagged release.
   compilation ([`DATA_LICENSE`](DATA_LICENSE)); per-item upstream licenses
   recorded in `sources.md`.
 
-[Unreleased]: https://github.com/cloud3000/opensource-data-dict/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/cloud3000/opensource-data-dict/releases/tag/v1.0.0
