@@ -21,6 +21,12 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
   source mask (e.g. GS1) or generated from type/allowed-values/scale.
   `datadict.db` is read-only input; the projection is rebuilt from scratch.
 
+### Changed
+
+- CI now rebuilds the UI projection and `tools/ci_check.py` validates
+  `ui_datadict.db` (completeness, FK integrity, `ByteLength = CharLength*4`,
+  positive `CharLength`, unique `(GroupID, Name)`).
+
 ## [1.2.1] - 2026-06-27
 
 ### Added
