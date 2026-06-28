@@ -241,6 +241,9 @@
   section): build command, the `Categories → Groups → UI_DataItems` schema, the
   `Wizard` group, the CharLength/ByteLength governance columns, ValidationSpecs,
   and CI coverage, with a sample row.
+- 2026-06-28 — Documented `build_ui_dict.py` and the derived UI projection in
+  `CONTRIBUTING.md` (project layout + a "never hand-edit; regenerate when
+  datadict.db changes" section).
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
