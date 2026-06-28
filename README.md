@@ -272,7 +272,7 @@ quantity, always record provenance.**
 ## Changelog
 
 Release-facing changes are in **[CHANGELOG.md](CHANGELOG.md)** (latest release:
-**[v1.2.1](https://github.com/cloud3000/opensource-data-dict/releases/tag/v1.2.1)**).
+**[v1.3.0](https://github.com/cloud3000/opensource-data-dict/releases/tag/v1.3.0)**).
 The granular development log lives in [`PROGRESS.md`](PROGRESS.md).
 
 ## Contributors
