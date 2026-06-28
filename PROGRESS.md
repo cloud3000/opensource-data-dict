@@ -217,6 +217,8 @@
   real distinction). Net-negative, so left inventory source-faithful. Real
   corroboration would need editorial **field-level** aliases (e.g.
   `stock.lot.name` ≈ `material_lot.id`), low payoff / higher risk — not pursued.
+- 2026-06-27 — Added a section 10 to `QUERY_COOKBOOK.md` with usage examples for
+  the helper tools (`find.py`, `export_ddl.py`) that wrap the SQL patterns.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
