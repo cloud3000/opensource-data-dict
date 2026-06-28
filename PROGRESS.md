@@ -229,6 +229,10 @@
   gs1 kept) → 120 groups; `Name` reduced to the field; UTF-8 implied types with
   `CharLength` policy, `ByteLength = CharLength*4`, and `ValidationSpecs` (source
   mask or generated). 12 cats / 120 groups / 3,688 items. CHANGELOG `[Unreleased]`.
+- 2026-06-28 — Extended CI to cover the UI projection: `build.yml` rebuilds
+  `ui_datadict.db`, and `tools/ci_check.py` validates it (completeness vs
+  datadict, FK integrity, `ByteLength == CharLength*4`, positive `CharLength`,
+  unique `(GroupID, Name)`). Verified green + fails on a corrupted invariant.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
