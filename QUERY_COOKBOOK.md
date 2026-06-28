@@ -288,3 +288,39 @@ SELECT json_group_array(json_object(
 FROM DataItems
 WHERE Name LIKE 'patient.%';
 ```
+
+---
+
+## 10. Finding & scaffolding by business term (helper tools)
+
+Two `tools/` scripts wrap the patterns above so you don't have to hand-write the
+SQL. They resolve a plain business word (category, entity, alias, or keyword)
+to data items — see the README "Find fields by business term" section.
+
+**Find items by term** — `tools/find.py`
+```bash
+python3 tools/find.py insurance --limit 3
+```
+```text
+=== 'insurance'  [~ alias -> [coverage]]  17 items, 1 entities, 1 categories
+    coverage.beneficiary    RELATION  Plan beneficiary
+    coverage.class          OBJECT    Additional coverage classifications
+    coverage.contract       RELATION  Contract details
+    ... +14 more
+```
+
+**Generate a relational schema** — `tools/export_ddl.py` (one `CREATE TABLE` per
+entity, with `FOREIGN KEY`s derived from the dictionary; `--dialect
+sqlite|postgres|mysql`)
+```bash
+python3 tools/export_ddl.py work_order            # validated against SQLite
+python3 tools/export_ddl.py billing patient --dialect postgres --out schema.sql
+```
+```sql
+CREATE TABLE work_order (
+    work_order_id INTEGER PRIMARY KEY,
+    ...
+    status VARCHAR(255) NOT NULL,
+    FOREIGN KEY (amended_from) REFERENCES work_order(work_order_id)
+);
+```
