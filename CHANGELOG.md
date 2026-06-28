@@ -10,7 +10,16 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 ## [Unreleased]
 
-_No unreleased changes yet._
+### Added
+
+- `tools/build_ui_dict.py` + `ui_datadict.db` / `ui_datadict.sql` — a UI /
+  resource-governance projection of the dictionary. Adds a `Groups` table
+  (entity = group; the 43 transient wizard/junction entities collapse into one
+  `Wizard` group) and a `UI_DataItems` table where `Name` is reduced to the
+  field, all items are UTF-8 with an implied type, `CharLength` is set per a
+  default policy, `ByteLength = CharLength * 4`, and `ValidationSpecs` is the
+  source mask (e.g. GS1) or generated from type/allowed-values/scale.
+  `datadict.db` is read-only input; the projection is rebuilt from scratch.
 
 ## [1.2.1] - 2026-06-27
 
