@@ -203,6 +203,9 @@
   `collection of` handled), surrogate-key modeling, topological ordering, and
   `--dialect sqlite|postgres|mysql` (SQLite self-validated; manufacturing =
   37 tables/59 FKs). Logged under CHANGELOG `[Unreleased]`.
+- 2026-06-27 — Cut release **v1.2.0**: rolled the `[Unreleased]` export_ddl work
+  into a CHANGELOG `[1.2.0]` section, updated compare links, bumped the README
+  latest-release pointer, tagged `v1.2.0`, and published the GitHub Release.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
