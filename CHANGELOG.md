@@ -10,6 +10,10 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 ## [Unreleased]
 
+_No unreleased changes yet._
+
+## [1.3.0] - 2026-06-28
+
 ### Added
 
 - `tools/build_ui_dict.py` + `ui_datadict.db` / `ui_datadict.sql` — a UI /
@@ -89,7 +93,8 @@ First tagged release.
   compilation ([`DATA_LICENSE`](DATA_LICENSE)); per-item upstream licenses
   recorded in `sources.md`.
 
-[Unreleased]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/cloud3000/opensource-data-dict/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.0.0...v1.1.0
