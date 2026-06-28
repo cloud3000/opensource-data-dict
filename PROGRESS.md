@@ -237,6 +237,10 @@
   `[Unreleased]` into a CHANGELOG `[1.3.0]` section, updated compare links,
   bumped the README latest-release pointer, tagged `v1.3.0`, and published the
   GitHub Release.
+- 2026-06-28 — Documented `ui_datadict.db` in the README ("UI projection"
+  section): build command, the `Categories → Groups → UI_DataItems` schema, the
+  `Wizard` group, the CharLength/ByteLength governance columns, ValidationSpecs,
+  and CI coverage, with a sample row.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
