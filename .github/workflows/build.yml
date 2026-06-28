@@ -26,6 +26,10 @@ jobs:
       - name: Regenerate data model + coverage badge
         run: python3 tools/gen_diagram.py
 
+      # Rebuild the UI / governance projection from the committed datadict.
+      - name: Build UI projection
+        run: python3 tools/build_ui_dict.py
+
       # Assert semantic invariants (not git-diff byte-identity, which is noisy
       # because of timestamps in the DB and the report's generated-date line).
       - name: Verify invariants
