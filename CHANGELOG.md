@@ -12,6 +12,13 @@ chronological development log see [`PROGRESS.md`](PROGRESS.md).
 
 _No unreleased changes yet._
 
+## [1.2.1] - 2026-06-27
+
+### Added
+
+- QUERY_COOKBOOK.md section 10: usage examples for the helper tools
+  (`tools/find.py`, `tools/export_ddl.py`) alongside the SQL recipes.
+
 ## [1.2.0] - 2026-06-27
 
 ### Added
@@ -67,7 +74,8 @@ First tagged release.
   compilation ([`DATA_LICENSE`](DATA_LICENSE)); per-item upstream licenses
   recorded in `sources.md`.
 
-[Unreleased]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/cloud3000/opensource-data-dict/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/cloud3000/opensource-data-dict/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/cloud3000/opensource-data-dict/releases/tag/v1.0.0
