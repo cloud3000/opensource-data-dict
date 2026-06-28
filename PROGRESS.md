@@ -219,6 +219,9 @@
   `stock.lot.name` ≈ `material_lot.id`), low payoff / higher risk — not pursued.
 - 2026-06-27 — Added a section 10 to `QUERY_COOKBOOK.md` with usage examples for
   the helper tools (`find.py`, `export_ddl.py`) that wrap the SQL patterns.
+- 2026-06-27 — Cut docs-only patch release **v1.2.1**: bundled the QUERY_COOKBOOK
+  section 10 into a CHANGELOG `[1.2.1]` section, updated compare links, bumped the
+  README latest-release pointer, tagged `v1.2.1`, and published the GitHub Release.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
