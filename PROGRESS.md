@@ -206,6 +206,17 @@
 - 2026-06-27 — Cut release **v1.2.0**: rolled the `[Unreleased]` export_ddl work
   into a CHANGELOG `[1.2.0]` section, updated compare links, bumped the README
   latest-release pointer, tagged `v1.2.0`, and published the GitHub Release.
+- 2026-06-27 — **Considered & rejected: "lot" inventory unification.**
+  Prototyped (in-memory, no commit) aliasing `stock.lot` (Odoo) +
+  `material_lot` + `material_sub_lot` (ISA-95) → canonical `lot`. Result:
+  **0 new cross-source merges** (31 → 31). Odoo and ISA-95 share **zero field
+  names** (Odoo `name`/`product_qty`/`ref` vs ISA-95 `id`/`quantity`/`status`),
+  so they never merge — they'd only be lumped under one entity with parallel
+  schemas. The only collapses were 9 same-source ISA-95 `material_lot` ↔
+  `material_sub_lot` fields, which **conflates a lot with its sub-lots** (loses a
+  real distinction). Net-negative, so left inventory source-faithful. Real
+  corroboration would need editorial **field-level** aliases (e.g.
+  `stock.lot.name` ≈ `material_lot.id`), low payoff / higher risk — not pursued.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
