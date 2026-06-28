@@ -31,9 +31,29 @@ normalize.py        # Phase 3: snake_case naming, entity/field aliases, cross-so
 seeds/              # one module per source: each exposes CATEGORIES + ITEMS
 tools/fetch_*.py    # generators that (re)build seed modules from upstream
 tools/gen_diagram.py, render_diagrams.py   # diagrams
+tools/build_ui_dict.py   # derives ui_datadict.db (UI/governance projection)
+tools/find.py, export_ddl.py   # query by business term / emit CREATE TABLE
+tools/ci_check.py   # semantic invariant gate (datadict + ui_datadict)
 sources.md          # provenance + licenses (update when adding a source)
 PROGRESS.md         # running build log (add an entry per change)
 ```
+
+## Derived: the UI projection (`ui_datadict.db`)
+
+`tools/build_ui_dict.py` rebuilds `ui_datadict.db` + `ui_datadict.sql` from
+`datadict.db` (read-only input) — a UI / resource-governance view
+(`Categories → Groups → UI_DataItems`; see README → "UI projection"). It is
+**fully derived**, so:
+
+- **Never hand-edit `ui_datadict.db` / `ui_datadict.sql`** — change the data via
+  the seeds, rebuild `datadict.db`, then regenerate the projection.
+- If your change alters `datadict.db`, **regenerate and commit** the projection:
+  ```bash
+  python3 build_dict.py && python3 tools/build_ui_dict.py
+  ```
+- CI rebuilds and validates it (`tools/ci_check.py`: completeness vs datadict,
+  FK integrity, `ByteLength = CharLength*4`, positive `CharLength`, unique
+  `(GroupID, Name)`).
 
 ## Adding a new source
 
