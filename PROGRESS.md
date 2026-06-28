@@ -233,6 +233,10 @@
   `ui_datadict.db`, and `tools/ci_check.py` validates it (completeness vs
   datadict, FK integrity, `ByteLength == CharLength*4`, positive `CharLength`,
   unique `(GroupID, Name)`). Verified green + fails on a corrupted invariant.
+- 2026-06-28 — Cut release **v1.3.0** (UI projection + its CI coverage): rolled
+  `[Unreleased]` into a CHANGELOG `[1.3.0]` section, updated compare links,
+  bumped the README latest-release pointer, tagged `v1.3.0`, and published the
+  GitHub Release.
 
 ## Current totals
 - **3,688 data items, 12 categories, 9 source standards** (3729 raw → 3688
