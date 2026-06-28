@@ -195,6 +195,41 @@ CREATE UNIQUE INDEX ux_dataitems_natural
 
 ---
 
+## UI projection (`ui_datadict.db`)
+
+A second, **derived** database aimed at UI / form generation and resource
+governance. `tools/build_ui_dict.py` reads `datadict.db` (read-only) and rebuilds
+`ui_datadict.db` + `ui_datadict.sql` from scratch:
+
+```bash
+python3 tools/build_ui_dict.py
+sqlite3 ui_datadict.db "SELECT * FROM UI_DataItems LIMIT 5;"
+```
+
+It reshapes the dictionary into a 3-level hierarchy — **`Categories → Groups →
+UI_DataItems`** (12 categories, **120 groups**, 3,688 items):
+
+- **`Groups`** — one per entity (the part before the last dot of `Name`). The
+  43 transient wizard / relation (junction) entities collapse into a single
+  **`Wizard`** group; `gs1` is kept. Each group carries its `CategoryID`.
+- **`UI_DataItems`** — `Name` is reduced to just the field; every item is treated
+  as **UTF-8** with an *implied* `DataType`, plus governance columns:
+  - **`CharLength`** — declared VARCHAR length, else a per-type default
+  - **`ByteLength`** = `CharLength × 4` (UTF-8 worst case)
+  - **`ValidationSpecs`** — the source mask (e.g. GS1) when present, else
+    generated from type / allowed values / scale
+
+| Groupname | Name | DataType | CharLength | ByteLength | ValidationSpecs |
+|---|---|---|--:|--:|---|
+| patient | dob | DATE | 10 | 40 | `^\d{4}-\d{2}-\d{2}$` |
+| patient | first_name | VARCHAR | 255 | 1020 | `maxlength: 255` |
+| patient | blood_group | VARCHAR | 255 | 1020 | `one of: A Positive\|A Negative\|…` |
+
+`datadict.db` is never modified; CI rebuilds and validates `ui_datadict.db`
+(completeness, FK integrity, `ByteLength = CharLength*4`, unique `(GroupID, Name)`).
+
+---
+
 ## How it's built
 
 ```
